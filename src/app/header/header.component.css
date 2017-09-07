@@ -1,0 +1,10 @@
+.navbar-container {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  background-color: white;
+  height: 70px;
+  border-bottom: 1px solid lightgray;
+  position: fixed;
+  box-shadow: 0 4px 2px -2px gray;
+}
