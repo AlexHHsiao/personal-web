@@ -1,0 +1,19 @@
+.footer-container {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  background-color: whitesmoke;
+  height: 70px;
+  border-top: 1px solid lightgray;
+  position: relative;
+  //box-shadow: 0 4px 2px -2px gray;
+  bottom: 0;
+  margin-bottom: 10px;
+}
+
+.footer-content {
+  margin-left: 10%;
+  margin-right: 10%;
+  background-color: red;
+  height: 100%;
+}
