@@ -1,0 +1,41 @@
+<div class="nav-container">
+  <div class="nav-content">
+
+    <div class="logo">
+      Logo
+    </div>
+
+    <ul class="nav-menu">
+      <li (click)="selectMenu('H', $event)" #home
+          (mouseover)="applyHover($event)" (mouseleave)="removeHover($event)">
+        <img src="../../assets/img/dot.svg" class="selection-icon">
+        Home
+      </li>
+
+      <li (click)="selectMenu('W', $event)" #who
+          (mouseover)="applyHover($event)" (mouseleave)="removeHover($event)">
+        <img src="../../assets/img/dot.svg" class="selection-icon">
+        Who We Are
+      </li>
+
+      <li (click)="selectMenu('M', $event)" #memories
+          (mouseover)="applyHover($event)" (mouseleave)="removeHover($event)">
+        <img src="../../assets/img/dot.svg" class="selection-icon">
+        Memories
+      </li>
+
+      <li (click)="selectMenu('C', $event)" #structure
+          (mouseover)="applyHover($event)" (mouseleave)="removeHover($event)">
+        <img src="../../assets/img/dot.svg" class="selection-icon">
+        CSA Structure
+      </li>
+
+      <li (click)="selectMenu('G', $event)" #gallery
+          (mouseover)="applyHover($event)" (mouseleave)="removeHover($event)">
+        <img src="../../assets/img/dot.svg" class="selection-icon">
+        Gallery
+      </li>
+    </ul>
+
+  </div>
+</div>
