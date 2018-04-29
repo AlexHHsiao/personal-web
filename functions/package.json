@@ -12,11 +12,11 @@
   "main": "lib/index.js",
   "dependencies": {
     "firebase-admin": "~5.8.1",
-    "firebase-functions": "^0.8.1"
+    "firebase-functions": "^0.8.2"
   },
   "devDependencies": {
     "tslint": "^5.8.0",
-    "typescript": "^2.5.3"
+    "typescript": "^2.8.3"
   },
   "private": true
 }
