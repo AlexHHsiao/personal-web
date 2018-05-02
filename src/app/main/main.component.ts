@@ -131,5 +131,8 @@ export class MainComponent implements OnInit {
     }
   }
 
-
+  topBtn(top: string) {
+    this.scrollToComponent(top);
+    this.header.changeMenu(top);
+  }
 }
