@@ -11,6 +11,10 @@ export class FooterComponent implements OnInit {
 
   year: number;
 
+  private github = 'https://github.com/AlexHHsiao';
+  private linkedin = 'https://www.linkedin.com/in/alex-xiao-603986b7/';
+  private resume = '/assets/file/AlexXiaoResume.pdf';
+
   constructor() { }
 
   ngOnInit() {
@@ -19,5 +23,28 @@ export class FooterComponent implements OnInit {
 
   goToTop() {
     this.topScroll.emit('H');
+  }
+
+  goToLink(type: string) {
+    switch (type) {
+      case 'github': {
+        window.open(this.github);
+        break;
+      }
+
+      case 'linkedin': {
+        window.open(this.linkedin);
+        break;
+      }
+
+      case 'resume': {
+        window.open(this.resume);
+        break;
+      }
+
+      default: {
+        break;
+      }
+    }
   }
 }

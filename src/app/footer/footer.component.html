@@ -11,12 +11,16 @@
   <div class="socialIcon">
 
     <ul class="iconList">
-      <li>
+      <li (click)="goToLink('linkedin')" title="linkedin">
         <img src="../../assets/img/linkedin.svg">
       </li>
 
-      <li>
+      <li (click)="goToLink('github')" title="github">
+        <img src="../../assets/img/github.svg">
+      </li>
 
+      <li (click)="goToLink('resume')" title="resume">
+        <img src="../../assets/img/file.svg">
       </li>
     </ul>
 

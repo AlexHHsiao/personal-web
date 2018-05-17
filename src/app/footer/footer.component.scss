@@ -49,15 +49,17 @@
     margin: 0;
     padding: 0;
     height: 100%;
-    display: flex;
-    width: auto;
-    float: right;
+    width: 100%;
+    display: block;
     position: relative;
+    text-align: center;
 
     li {
       display: inline-block;
       width: 30px;
       height: 30px;
+      margin: 10px;
+      cursor: pointer;
 
       img {
         width: 100%;
