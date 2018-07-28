@@ -1,6 +1,6 @@
 import * as functions from 'firebase-functions';
 import * as admin from 'firebase-admin';
-import {Room, Player, RoomConfig, RoleSize} from './model/game';
+import {Room, Player, RoomConfig, MinRoomSize} from './model/game';
 
 admin.initializeApp(functions.config().firebase);
 // Start writing Firebase Functions
@@ -18,30 +18,44 @@ export const helloWorld = functions.https.onRequest((request, response) => {
   //response.send(new Player('12', 'haha', 'safasf'));
 });
 
+//&& body.witchSaveSelf
+//!(body.werewolf && body.villager && body.seer && body.size)
+
 // express functions
 const createRoom = async (req, res) => {
-  let body: RoomConfig = req.body;
+  const body: RoomConfig = req.body;
 
-  if (Object.keys(body).length < RoleSize || body.villager
-) {
+  if (typeof body.werewolf !== 'number'
+    || typeof body.seer !== 'number'
+    || typeof body.villager !== 'number'
+    || typeof body.size !== 'number'
+    || typeof body.witchSaveSelf !== 'boolean') {
     return res.status(400).json({
-      error: "Please provide correct body attribute",
+      error: 'Please provide correct body attribute',
       code: 400
     });
   }
 
-  if (body.werewolf < 1 || body.villager < 1 || body.seer < 1) {
+  if (body.werewolf < 1
+    || body.villager < 1
+    || body.seer < 1
+    || body.size < MinRoomSize) {
     return res.status(400).json({
-      error: "Werewolf, villager, or seer cannot be less than 1",
+      error: 'Werewolf, villager, or seer cannot be less than 1, ' +
+      'and group size must be more than ' + MinRoomSize,
       code: 400
     });
-  } else {
-    res.sendStatus(200);
   }
+
+  res.sendStatus(200);
+};
+
+const joinRoom = async (req, res) => {
+
 };
 
 // Automatically allow cross-origin requests
-app.use(cors({ origin: true }));
+app.use(cors({origin: true}));
 
 // Add middleware to authenticate requests
 //app.use(myMiddleware);
@@ -56,6 +70,7 @@ app.get('/', (req, res) => {
 });
 
 app.post('/createRoom', createRoom);
+app.post('/joinRoom', joinRoom);
 
 //Expose Express API as a single Cloud Function:
 exports.game = functions.https.onRequest(app);

@@ -1,9 +1,8 @@
-export const RoleSize = 8;
+export const MinRoomSize = 6;
 
 export interface Room {
   gameEnd: boolean;
   full: boolean;
-  size: number;
   players: Array<Player>;
   roomID: string;
   roomConfig: RoomConfig;
@@ -23,5 +22,6 @@ export interface RoomConfig {
   witch: number;
   guard: number;
   fool: number;
+  size: number;
   witchSaveSelf: boolean;
 }

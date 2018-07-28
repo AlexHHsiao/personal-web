@@ -24,24 +24,34 @@ exports.helloWorld = functions.https.onRequest((request, response) => {
     console.log(uuidv4());
     //response.send(new Player('12', 'haha', 'safasf'));
 });
+//&& body.witchSaveSelf
+//!(body.werewolf && body.villager && body.seer && body.size)
 // express functions
 const createRoom = (req, res) => __awaiter(this, void 0, void 0, function* () {
-    let body = req.body;
-    if (Object.keys(body).length < game_1.RoleSize || body.villager) {
+    const body = req.body;
+    if (typeof body.werewolf !== 'number'
+        || typeof body.seer !== 'number'
+        || typeof body.villager !== 'number'
+        || typeof body.size !== 'number'
+        || typeof body.witchSaveSelf !== 'boolean') {
         return res.status(400).json({
-            error: "Please provide correct body attribute",
+            error: 'Please provide correct body attribute',
             code: 400
         });
     }
-    if (body.werewolf < 1 || body.villager < 1 || body.seer < 1) {
+    if (body.werewolf < 1
+        || body.villager < 1
+        || body.seer < 1
+        || body.size < game_1.MinRoomSize) {
         return res.status(400).json({
-            error: "Werewolf, villager, or seer cannot be less than 1",
+            error: 'Werewolf, villager, or seer cannot be less than 1, ' +
+                'and group size must be more than ' + game_1.MinRoomSize,
             code: 400
         });
     }
-    else {
-        res.sendStatus(200);
-    }
+    res.sendStatus(200);
+});
+const joinRoom = (req, res) => __awaiter(this, void 0, void 0, function* () {
 });
 // Automatically allow cross-origin requests
 app.use(cors({ origin: true }));
@@ -56,6 +66,7 @@ app.get('/', (req, res) => {
     //res.sendStatus(200);
 });
 app.post('/createRoom', createRoom);
+app.post('/joinRoom', joinRoom);
 //Expose Express API as a single Cloud Function:
 exports.game = functions.https.onRequest(app);
 //# sourceMappingURL=index.js.map
