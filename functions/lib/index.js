@@ -49,7 +49,16 @@ const createRoom = (req, res) => __awaiter(this, void 0, void 0, function* () {
             code: 400
         });
     }
-    res.sendStatus(200);
+    admin.firestore().collection('room').get().then((snapshot) => {
+        snapshot.forEach((doc) => {
+            console.log(doc.id, '=>', doc.data());
+        });
+    });
+    const roomID = Math.random().toString().substr(2, 6);
+    return res.status(200).json({
+        roomID: roomID,
+        code: 200
+    });
 });
 const joinRoom = (req, res) => __awaiter(this, void 0, void 0, function* () {
 });
