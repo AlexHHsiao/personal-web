@@ -12,6 +12,8 @@ export interface Player {
   name: string;
   role: string;
   playerID: string;
+  roomID: string;
+  seat: number
 }
 
 export interface RoomConfig {
