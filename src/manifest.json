@@ -1,0 +1,12 @@
+{
+  "name": "Alex Xiao Personal Website",
+  "short_name": "Alex",
+  "icons": [
+    {
+      "src": "./favicon.ico",
+      "type": "image/ico",
+      "sizes": "24x24"
+    }
+  ],
+  "gcm_sender_id": "103953800507"
+}

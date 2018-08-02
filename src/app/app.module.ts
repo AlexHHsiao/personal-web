@@ -13,6 +13,8 @@ import { StructureComponent } from './structure/structure.component';
 import { MemoriesComponent } from './memories/memories.component';
 import { WhoWeAreComponent } from './who-we-are/who-we-are.component';
 import {RouterModule, Routes} from '@angular/router';
+import {environment} from '../environments/environment';
+import { AngularFireModule } from 'angularfire2';
 
 const router: Routes = [
   {path: '', component: MainComponent},
@@ -35,6 +37,7 @@ const router: Routes = [
   imports: [
     BrowserModule,
     RouterModule.forRoot(router),
+    AngularFireModule.initializeApp(environment.firebase)
   ],
   providers: [],
   bootstrap: [AppComponent]

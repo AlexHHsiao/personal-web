@@ -5,6 +5,7 @@ export interface Room {
   full: boolean;
   players: Array<Player>;
   roomID: string;
+  owner: Player;
   roomConfig: RoomConfig;
 }
 

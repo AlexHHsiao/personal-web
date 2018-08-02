@@ -68,6 +68,7 @@ const createRoom = (req, res) => __awaiter(this, void 0, void 0, function* () {
         gameEnd: false,
         full: false,
         players: [playerSelf],
+        owner: playerSelf,
         roomID: roomID,
         roomConfig: body
     };
@@ -105,6 +106,9 @@ const joinRoom = (req, res) => __awaiter(this, void 0, void 0, function* () {
             };
             const newRoomObj = Object.assign({}, doc.data());
             newRoomObj.players.push(player);
+            if (newRoomObj.players.length === newRoomObj.roomConfig.size) {
+                newRoomObj.full = true;
+            }
             dbRef.collection('player').doc(player.playerID).set(player);
             dbRef.collection('room').doc(body.roomID).set(newRoomObj);
             return res.status(200).json({
@@ -120,23 +124,56 @@ const joinRoom = (req, res) => __awaiter(this, void 0, void 0, function* () {
         });
     });
 });
+const takeSeat = (req, res) => __awaiter(this, void 0, void 0, function* () {
+});
 const leaveRoom = (req, res) => __awaiter(this, void 0, void 0, function* () {
+    const playerID = req.params.player;
+    if (!playerID) {
+        return res.status(400).json({
+            error: 'Please provide correct attribute',
+            code: 400
+        });
+    }
+    const dbRef = admin.firestore();
+    dbRef.collection('player');
+    dbRef.collection('player').doc(playerID).get().then(doc => {
+        if (!doc.exists) {
+            return res.status(404).json({
+                error: 'No such player id',
+                code: 404
+            });
+        }
+        else {
+            const newRoomObj = Object.assign({}, doc.data());
+            newRoomObj.players.push(player);
+            if (newRoomObj.players.length === newRoomObj.roomConfig.size) {
+                newRoomObj.full = true;
+            }
+            dbRef.collection('player').doc(player.playerID).set(player);
+            dbRef.collection('room').doc(body.roomID).set(newRoomObj);
+            return res.status(200).json({
+                roomObj: newRoomObj,
+                player: player,
+                code: 200
+            });
+        }
+    }).catch(error => {
+        return res.status(503).json({
+            error: error,
+            code: 503
+        });
+    });
 });
 // Automatically allow cross-origin requests
 app.use(cors({ origin: true }));
 // Add middleware to authenticate requests
 //app.use(myMiddleware);
 // build multiple CRUD interfaces:
-app.get('/', (req, res) => {
-    //res.send(controller.createRoom(req.params.id));
-    res.status(500).json({ error: 'aaaaaa' });
-    //res.json({error: 'aaaaaa'});
-    //res.send({error: 'aaaaaa'});
-    //res.sendStatus(200);
-});
 app.post('/createRoom', createRoom);
 app.post('/joinRoom', joinRoom);
-app.delete('/leaveRoom', leaveRoom);
+app.post('/takeSeat', takeSeat);
+app.delete('/leaveRoom/:player', leaveRoom);
+//app.post('/:id/leaveRoom', leaveRoom);
 //Expose Express API as a single Cloud Function:
 exports.game = functions.https.onRequest(app);
 //# sourceMappingURL=index.js.map
