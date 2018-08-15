@@ -24,8 +24,16 @@ exports.helloWorld = functions.https.onRequest((request, response) => {
     console.log(uuidv4());
     //response.send(new Player('12', 'haha', 'safasf'));
 });
-//&& body.witchSaveSelf
-//!(body.werewolf && body.villager && body.seer && body.size)
+exports.notifTest = functions.https.onRequest((req, res) => {
+    const payload = {
+        notification: {
+            title: 'this is test',
+            body: 'did you get my message??????'
+        }
+    };
+    // 774914481358
+    return admin.messaging().sendToDevice('774914481358', payload);
+});
 // express functions
 const createRoom = (req, res) => __awaiter(this, void 0, void 0, function* () {
     const body = req.body;
@@ -65,7 +73,7 @@ const createRoom = (req, res) => __awaiter(this, void 0, void 0, function* () {
         seat: null
     };
     const roomObj = {
-        gameEnd: false,
+        gameEnd: true,
         full: false,
         players: [playerSelf],
         owner: playerSelf,
@@ -135,7 +143,6 @@ const leaveRoom = (req, res) => __awaiter(this, void 0, void 0, function* () {
         });
     }
     const dbRef = admin.firestore();
-    dbRef.collection('player');
     dbRef.collection('player').doc(playerID).get().then(doc => {
         if (!doc.exists) {
             return res.status(404).json({
@@ -144,17 +151,39 @@ const leaveRoom = (req, res) => __awaiter(this, void 0, void 0, function* () {
             });
         }
         else {
-            const newRoomObj = Object.assign({}, doc.data());
-            newRoomObj.players.push(player);
-            if (newRoomObj.players.length === newRoomObj.roomConfig.size) {
-                newRoomObj.full = true;
-            }
-            dbRef.collection('player').doc(player.playerID).set(player);
-            dbRef.collection('room').doc(body.roomID).set(newRoomObj);
-            return res.status(200).json({
-                roomObj: newRoomObj,
-                player: player,
-                code: 200
+            dbRef.collection('room').doc(doc.data().roomID).get().then(room => {
+                if (!room.exists) {
+                    return res.status(404).json({
+                        error: 'This player\' room doesn\'t exist',
+                        code: 404
+                    });
+                }
+                else {
+                    const newRoomObj = Object.assign({}, room.data());
+                    let counter = 0;
+                    for (const player of newRoomObj.players) {
+                        if (player.playerID === playerID) {
+                            newRoomObj.players.splice(counter, 1);
+                            //======================== send push notification here to frontend
+                            newRoomObj.full = false;
+                            dbRef.collection('player').doc(playerID).delete();
+                            dbRef.collection('room').doc(newRoomObj.roomID).set(newRoomObj);
+                            return res.status(200).json({
+                                code: 200
+                            });
+                        }
+                        counter++;
+                    }
+                    return res.status(400).json({
+                        error: 'Something went wrong',
+                        code: 400
+                    });
+                }
+            }).catch(error => {
+                return res.status(503).json({
+                    error: error,
+                    code: 503
+                });
             });
         }
     }).catch(error => {
@@ -173,7 +202,6 @@ app.post('/createRoom', createRoom);
 app.post('/joinRoom', joinRoom);
 app.post('/takeSeat', takeSeat);
 app.delete('/leaveRoom/:player', leaveRoom);
-//app.post('/:id/leaveRoom', leaveRoom);
 //Expose Express API as a single Cloud Function:
 exports.game = functions.https.onRequest(app);
 //# sourceMappingURL=index.js.map
