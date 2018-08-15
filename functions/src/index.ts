@@ -26,8 +26,14 @@ export const notifTest = functions.https.onRequest((req, res) => {
     }
   };
 
+  const token = 'AAAAtGyAnM4:APA91bH6Nj4LB_s0JHqCbiC8fJ_guxVvYOP55Webh5ff288x2viHDIv7Sk42AJzbbWaBmd0D3nZMapjK3hbNYIRpM71CJnZomZfVSMvePkZ9oJ_xqTISSR1dZGmAJnXT8E4nsO1RM50y'
   // 774914481358
-  return admin.messaging().sendToDevice('774914481358', payload);
+  admin.messaging().sendToTopic('all', payload).then((response) => {
+    res.send(response);
+  })
+    .catch((error) => {
+      res.send(error);
+    });
 });
 
 // express functions

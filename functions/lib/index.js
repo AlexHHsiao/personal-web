@@ -31,8 +31,14 @@ exports.notifTest = functions.https.onRequest((req, res) => {
             body: 'did you get my message??????'
         }
     };
+    const token = 'AAAAtGyAnM4:APA91bH6Nj4LB_s0JHqCbiC8fJ_guxVvYOP55Webh5ff288x2viHDIv7Sk42AJzbbWaBmd0D3nZMapjK3hbNYIRpM71CJnZomZfVSMvePkZ9oJ_xqTISSR1dZGmAJnXT8E4nsO1RM50y';
     // 774914481358
-    return admin.messaging().sendToDevice('774914481358', payload);
+    admin.messaging().sendToTopic('all', payload).then((response) => {
+        res.send(response);
+    })
+        .catch((error) => {
+        res.send(error);
+    });
 });
 // express functions
 const createRoom = (req, res) => __awaiter(this, void 0, void 0, function* () {
