@@ -9,8 +9,8 @@ export class HeaderComponent implements OnInit {
 
   @ViewChild('home') homeSelection: ElementRef;
   @ViewChild('who') whoSelection: ElementRef;
-  @ViewChild('memories') memoriesSelection: ElementRef;
-  @ViewChild('structure') structureSelection: ElementRef;
+  @ViewChild('project') projectSelection: ElementRef;
+  @ViewChild('experiment') experimentSelection: ElementRef;
   @ViewChild('gallery') gallerySelection: ElementRef;
 
   @Output() scrollToComponent = new EventEmitter<String>();
@@ -72,17 +72,17 @@ export class HeaderComponent implements OnInit {
         break;
       }
 
-      case 'M': {
+      case 'P': {
         if (this.currentSelection !== this.homeSelection) {
-          this.changeSelectionRender(this.memoriesSelection.nativeElement);
+          this.changeSelectionRender(this.projectSelection.nativeElement);
         }
 
         break;
       }
 
-      case 'C': {
+      case 'E': {
         if (this.currentSelection !== this.homeSelection) {
-          this.changeSelectionRender(this.structureSelection.nativeElement);
+          this.changeSelectionRender(this.experimentSelection.nativeElement);
         }
 
         break;

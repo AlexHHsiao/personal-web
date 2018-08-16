@@ -1,0 +1,33 @@
+.btn {
+  font-size: medium;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-block;
+  box-sizing: border-box;
+  min-width: 130px;
+  height: 40px;
+  padding: 5px 10px;
+  text-align: center;
+
+  &.btn-danger {
+    color: whitesmoke;
+    background-color: #d9534f;
+  }
+
+  &.btn-primary {
+
+
+  }
+
+  &.btn-info {
+    color: whitesmoke;
+    background-color: lightskyblue;
+  }
+
+  &.btn-block {
+
+  }
+
+}
+
+

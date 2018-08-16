@@ -10,8 +10,8 @@ export class MainComponent implements OnInit {
 
   @ViewChild('home') homeComp: ElementRef;
   @ViewChild('who') whoComp: ElementRef;
-  @ViewChild('memories') memoriesComp: ElementRef;
-  @ViewChild('structure') structureComp: ElementRef;
+  @ViewChild('project') projectComp: ElementRef;
+  @ViewChild('experiment') experimentComp: ElementRef;
   @ViewChild('gallery') galleryComp: ElementRef;
 
   @ViewChild('header') header: HeaderComponent;
@@ -53,13 +53,13 @@ export class MainComponent implements OnInit {
           break;
         }
 
-        case 'M': {
-          this.smoothScroll(window.scrollY, this.memoriesComp.nativeElement.offsetTop);
+        case 'P': {
+          this.smoothScroll(window.scrollY, this.projectComp.nativeElement.offsetTop);
           break;
         }
 
-        case 'C': {
-          this.smoothScroll(window.scrollY, this.structureComp.nativeElement.offsetTop);
+        case 'E': {
+          this.smoothScroll(window.scrollY, this.experimentComp.nativeElement.offsetTop);
           break;
         }
 
@@ -119,12 +119,15 @@ export class MainComponent implements OnInit {
     if (!this.isScrolling) {
       if (window.scrollY < this.whoComp.nativeElement.offsetTop) {
         this.header.changeMenu('H');
-      } else if (window.scrollY >= this.whoComp.nativeElement.offsetTop && window.scrollY < this.memoriesComp.nativeElement.offsetTop) {
+      } else if (window.scrollY >= this.whoComp.nativeElement.offsetTop
+        && window.scrollY < this.projectComp.nativeElement.offsetTop) {
         this.header.changeMenu('W');
-      } else if (window.scrollY >= this.memoriesComp.nativeElement.offsetTop && window.scrollY < this.structureComp.nativeElement.offsetTop) {
-        this.header.changeMenu('M');
-      } else if (window.scrollY >= this.structureComp.nativeElement.offsetTop && window.scrollY < this.galleryComp.nativeElement.offsetTop) {
-        this.header.changeMenu('C');
+      } else if (window.scrollY >= this.projectComp.nativeElement.offsetTop
+        && window.scrollY < this.experimentComp.nativeElement.offsetTop) {
+        this.header.changeMenu('P');
+      } else if (window.scrollY >= this.experimentComp.nativeElement.offsetTop
+        && window.scrollY < this.galleryComp.nativeElement.offsetTop) {
+        this.header.changeMenu('E');
       } else if (window.scrollY >= this.galleryComp.nativeElement.offsetTop) {
         this.header.changeMenu('G');
       }
