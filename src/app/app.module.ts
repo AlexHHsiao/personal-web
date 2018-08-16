@@ -15,6 +15,7 @@ import { WhoIAmComponent } from './who-i-am/who-i-am.component';
 import {RouterModule, Routes} from '@angular/router';
 import {environment} from '../environments/environment';
 import { AngularFireModule } from 'angularfire2';
+import { ChatComponent } from './chat/chat.component';
 
 const router: Routes = [
   {path: '', component: MainComponent},
@@ -32,7 +33,8 @@ const router: Routes = [
     GalleryComponent,
     ProjectComponent,
     ExperimentComponent,
-    WhoIAmComponent
+    WhoIAmComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
