@@ -51,6 +51,16 @@
   height: 70px;
   width: 100%;
   background-color: #ededed;
+  box-sizing: border-box;
+  padding: 0 10px;
+
+  input {
+    
+  }
+
+  button {
+
+  }
 }
 
 @media only screen and (max-width: 768px) {
