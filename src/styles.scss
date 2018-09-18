@@ -1,10 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
-
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
 @import "assets/scss/_button.scss";
 
 body {
   background-color: #fcfcfc;
-  font-weight: 500;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 400px;
   overflow-y: auto;
   margin: 0;
 }
