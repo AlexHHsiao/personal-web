@@ -8,10 +8,20 @@
   height: 40px;
   padding: 5px 10px;
   text-align: center;
+  border: none;
+  transition: .3s;
 
   &.btn-danger {
     color: whitesmoke;
     background-color: #d9534f;
+  }
+
+  &.btn-danger:hover:enabled {
+    background-color: #e27c79;
+  }
+
+  &.btn-danger:active:enabled {
+    background-color: #c9302c;
   }
 
   &.btn-primary {
@@ -19,9 +29,30 @@
     background-color: #007bff;
   }
 
+  &.btn-primary:hover:enabled {
+    background-color: #3395ff;
+  }
+
+  &.btn-primary:active:enabled {
+    background-color: #0062cc;
+  }
+
   &.btn-info {
     color: whitesmoke;
-    background-color: lightskyblue;
+    background-color: #56BAF8;
+  }
+
+  &.btn-info:hover:enabled {
+    background-color: #87cefa;
+  }
+
+  &.btn-info:active:enabled {
+    background-color: #25a6f6;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: #a8a8a8;
   }
 
   &.btn-block {
