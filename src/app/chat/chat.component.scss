@@ -1,5 +1,5 @@
 .chat-container {
-  width: 800px;
+  width: 750px;
   height: 80%;
   position: absolute;
   top: 0;
@@ -53,14 +53,6 @@
   background-color: #ededed;
   box-sizing: border-box;
   padding: 0 10px;
-
-  input {
-    
-  }
-
-  button {
-
-  }
 }
 
 @media only screen and (max-width: 768px) {

@@ -1,14 +1,20 @@
 .ax-input {
-
-  &:hover {
-
-  }
+  display: block;
+  width: 100%;
+  height: 25px;
+  padding: 5px 10px;
+  border-radius: 3px;
+  border: 1px solid #ced4da;
+  line-height: 25px;
+  font-size: 15px;
 
   &:disabled {
-
+    border-color: grey;
+    background-color: #cecece;
+    cursor: not-allowed;
   }
 
   &.input-danger {
-
+    border-color: #d9534f;
   }
 }
