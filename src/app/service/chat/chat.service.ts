@@ -8,6 +8,7 @@ export class ChatService {
   private messageCollection: Array<ChatMessage>;
 
   constructor() {
+    this.messageCollection = [];
   }
 
   getMessageCollection() {

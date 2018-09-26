@@ -58,7 +58,11 @@
   &.btn-block {
     width: 100%;
   }
-
 }
 
+@media only screen and (max-width: 768px) {
+  .btn {
+    min-width: 60px;
+  }
+}
 

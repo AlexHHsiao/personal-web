@@ -1,8 +1,7 @@
 export class ChatMessage {
   text: string;
   fromUser: boolean;
-  ts: string;
-
+  ts: Date;
 
   constructor(text, fromUser, ts) {
     this.text = text;

@@ -31,7 +31,6 @@ exports.notifTest = functions.https.onRequest((req, res) => {
             body: 'did you get my message??????'
         }
     };
-    const token = 'AAAAtGyAnM4:APA91bH6Nj4LB_s0JHqCbiC8fJ_guxVvYOP55Webh5ff288x2viHDIv7Sk42AJzbbWaBmd0D3nZMapjK3hbNYIRpM71CJnZomZfVSMvePkZ9oJ_xqTISSR1dZGmAJnXT8E4nsO1RM50y';
     // 774914481358
     admin.messaging().sendToTopic('all', payload).then((response) => {
         res.send(response);
@@ -39,6 +38,17 @@ exports.notifTest = functions.https.onRequest((req, res) => {
         .catch((error) => {
         res.send(error);
     });
+});
+// fire storage functions
+exports.createUser = functions.firestore
+    .document('img/{userId}')
+    .onCreate((snap, context) => {
+    // Get an object representing the document
+    // e.g. {'name': 'Marie', 'age': 66}
+    const newValue = snap.data();
+    // access a particular field as you would any JS property
+    console.log(newValue);
+    // perform desired operations ...
 });
 // express functions
 const createRoom = (req, res) => __awaiter(this, void 0, void 0, function* () {
@@ -138,8 +148,9 @@ const joinRoom = (req, res) => __awaiter(this, void 0, void 0, function* () {
         });
     });
 });
-const takeSeat = (req, res) => __awaiter(this, void 0, void 0, function* () {
-});
+/*const takeSeat = async (req, res) => {
+
+};*/
 const leaveRoom = (req, res) => __awaiter(this, void 0, void 0, function* () {
     const playerID = req.params.player;
     if (!playerID) {
@@ -206,7 +217,7 @@ app.use(cors({ origin: true }));
 // build multiple CRUD interfaces:
 app.post('/createRoom', createRoom);
 app.post('/joinRoom', joinRoom);
-app.post('/takeSeat', takeSeat);
+//app.post('/takeSeat', takeSeat);
 app.delete('/leaveRoom/:player', leaveRoom);
 //Expose Express API as a single Cloud Function:
 exports.game = functions.https.onRequest(app);

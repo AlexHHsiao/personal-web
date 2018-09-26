@@ -26,7 +26,6 @@ export const notifTest = functions.https.onRequest((req, res) => {
     }
   };
 
-  const token = 'AAAAtGyAnM4:APA91bH6Nj4LB_s0JHqCbiC8fJ_guxVvYOP55Webh5ff288x2viHDIv7Sk42AJzbbWaBmd0D3nZMapjK3hbNYIRpM71CJnZomZfVSMvePkZ9oJ_xqTISSR1dZGmAJnXT8E4nsO1RM50y'
   // 774914481358
   admin.messaging().sendToTopic('all', payload).then((response) => {
     res.send(response);
@@ -35,6 +34,22 @@ export const notifTest = functions.https.onRequest((req, res) => {
       res.send(error);
     });
 });
+
+// fire storage functions
+
+exports.createUser = functions.firestore
+  .document('img/{userId}')
+  .onCreate((snap, context) => {
+    // Get an object representing the document
+    // e.g. {'name': 'Marie', 'age': 66}
+    const newValue = snap.data();
+
+    // access a particular field as you would any JS property
+    console.log(newValue);
+
+    // perform desired operations ...
+  });
+
 
 // express functions
 const createRoom = async (req, res) => {
@@ -152,9 +167,9 @@ const joinRoom = async (req, res) => {
   });
 };
 
-const takeSeat = async (req, res) => {
+/*const takeSeat = async (req, res) => {
 
-};
+};*/
 
 const leaveRoom = async (req, res) => {
 
@@ -236,7 +251,7 @@ app.use(cors({origin: true}));
 // build multiple CRUD interfaces:
 app.post('/createRoom', createRoom);
 app.post('/joinRoom', joinRoom);
-app.post('/takeSeat', takeSeat);
+//app.post('/takeSeat', takeSeat);
 app.delete('/leaveRoom/:player', leaveRoom);
 
 //Expose Express API as a single Cloud Function:

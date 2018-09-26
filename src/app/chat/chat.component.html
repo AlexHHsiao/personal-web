@@ -11,15 +11,36 @@
 
   <div class="chat-body">
 
-    <div class="chat-message">
+    <div class="chat-content">
+
+      <ng-container *ngFor="let msg of getAllMsg()">
+
+        <div class="chat-msg-block" [ngStyle]="{'marginLeft': msg.fromUser? '30%' : '0'}">
+
+          <div class="profile-container" *ngIf="!msg.fromUser">
+            <img src="../../assets/img/useravatar.svg">
+          </div>
+
+          <div class="chat-msg" [ngClass]="{'msg-user': msg.fromUser, 'msg-bot': !msg.fromUser}">
+            {{msg.text}}
+          </div>
+
+        </div>
+
+      </ng-container>
 
     </div>
 
     <div class="chat-input">
 
-      <input class="ax-input">
+      <div class="input-section">
+        <input class="ax-input" [(ngModel)]="msg" (keydown.enter)="sendMsg()">
+      </div>
 
-      <button class="btn btn-primary">Submit</button>
+      <button class="btn btn-primary" style="float: right" (click)="sendMsg()"
+              [disabled]="msg.trim().length === 0">
+        Send
+      </button>
 
     </div>
 

@@ -38,12 +38,12 @@
   background-color: whitesmoke;
 }
 
-.chat-message {
+.chat-content {
   height: calc(100% - 70px);
   width: 100%;
   position: relative;
   overflow: auto;
-  padding: 5px 10px;
+  padding: 5px 20px;
   box-sizing: border-box;
 }
 
@@ -52,11 +52,63 @@
   width: 100%;
   background-color: #ededed;
   box-sizing: border-box;
-  padding: 0 10px;
+  padding: 15px 10px 0 10px;
+
+  .input-section {
+    display: inline-block;
+    width: 570px;
+  }
+}
+
+.chat-msg-block {
+  width: 70%;
+  margin-bottom: 15px;
+  display: flex;
+  height: auto;
+
+  .profile-container {
+    width: 45px;
+    display: inline-block;
+
+    img {
+      height: 35px;
+      width: 35px;
+      border-radius: 50%;
+      display: block;
+    }
+  }
+
+  .chat-msg {
+    display: inline-block;
+    box-sizing: border-box;
+    word-break: break-word;
+    border-radius: 7px;
+    border: 1px solid grey;
+    padding: 7px;
+  }
+
+  .msg-bot {
+    max-width: calc(100% - 45px);
+  }
+
+  .msg-user {
+    max-width: 100%;
+    margin-left: auto;
+  }
 }
 
 @media only screen and (max-width: 768px) {
   .chat-container {
     width: 90%;
+  }
+
+  .chat-msg-block {
+    margin-bottom: 10px;
+  }
+
+  .chat-input {
+    .input-section {
+      width: calc(100% - 80px);
+    }
   }
 }
