@@ -2,13 +2,13 @@ import {Injectable} from '@angular/core';
 
 @Injectable()
 
-export class ApiServerService {
-
+class ApiHelper {
   private url: string;
   private hasParam: boolean;
 
-  constructor() {
+  constructor(url) {
     this.hasParam = false;
+    this.url = url;
   }
 
   dictionary(url) {
@@ -19,9 +19,9 @@ export class ApiServerService {
   param(param) {
     if (!this.hasParam) {
       this.hasParam = true;
-      this.url = '?' + param;
+      this.url += '?' + param;
     } else {
-      this.url = '&' + param;
+      this.url += '&' + param;
     }
 
     return this;
@@ -29,5 +29,11 @@ export class ApiServerService {
 
   getUrl() {
     return this.url;
+  }
+}
+
+export class ApiServerService {
+  createUrl(url) {
+    return new ApiHelper(url);
   }
 }

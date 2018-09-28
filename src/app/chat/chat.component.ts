@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ChatService} from '../service/chat/chat.service';
 import {ChatMessage} from '../model/chat';
+import {ApiAiClient} from 'api-ai-javascript';
 
 @Component({
   selector: 'app-chat',
@@ -11,10 +12,16 @@ export class ChatComponent implements OnInit {
 
   msg: string;
   sendAllowed: boolean;
+  client: any;
 
   constructor(private chatService: ChatService) {
     this.msg = '';
     this.sendAllowed = true;
+    this.client = new ApiAiClient({accessToken: '3dc3c8020ecb4cb0983e2a9d2719807d'});
+
+    // this.client.textRequest('hello').then((response) => {
+    //   console.log('answer', response)
+    // });
 
     const chatMessage = new ChatMessage(
       'This is Alex bot. I can answer you ang question you want about Alex. How can I help you?',

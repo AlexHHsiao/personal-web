@@ -1,5 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
+import {HttpClientModule} from '@angular/common//http';
 
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './header/header.component';
@@ -17,6 +18,9 @@ import {AngularFireModule} from 'angularfire2';
 import {ChatComponent} from './chat/chat.component';
 import {ChatService} from './service/chat/chat.service';
 import {FormsModule} from '@angular/forms';
+import {GithubService} from './service/github/github.service';
+import {ApiServerService} from './service/api-server/api-server.service';
+import {HeaderService} from './service/header/header.service';
 
 const router: Routes = [
   {path: '', component: MainComponent},
@@ -39,12 +43,16 @@ const router: Routes = [
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     FormsModule,
     RouterModule.forRoot(router),
     AngularFireModule.initializeApp(environment.firebase)
   ],
   providers: [
-    ChatService
+    ChatService,
+    GithubService,
+    ApiServerService,
+    HeaderService
   ],
   bootstrap: [AppComponent]
 })
