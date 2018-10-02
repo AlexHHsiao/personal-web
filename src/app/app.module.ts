@@ -15,12 +15,13 @@ import {WhoIAmComponent} from './who-i-am/who-i-am.component';
 import {RouterModule, Routes} from '@angular/router';
 import {environment} from '../environments/environment';
 import {AngularFireModule} from 'angularfire2';
-import {ChatComponent} from './chat/chat.component';
+import {ChatComponent} from './who-i-am/chat/chat.component';
 import {ChatService} from './service/chat/chat.service';
 import {FormsModule} from '@angular/forms';
 import {GithubService} from './service/github/github.service';
 import {ApiServerService} from './service/api-server/api-server.service';
 import {HeaderService} from './service/header/header.service';
+import { GithubProjectComponent } from './project/github-project/github-project.component';
 
 const router: Routes = [
   {path: '', component: MainComponent},
@@ -39,7 +40,8 @@ const router: Routes = [
     ProjectComponent,
     ExperimentComponent,
     WhoIAmComponent,
-    ChatComponent
+    ChatComponent,
+    GithubProjectComponent
   ],
   imports: [
     BrowserModule,

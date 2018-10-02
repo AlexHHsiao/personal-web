@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {ChatService} from '../service/chat/chat.service';
-import {ChatMessage} from '../model/chat';
+import {ChatService} from '../../service/chat/chat.service';
+import {ChatMessage} from '../../model/chat';
 import {ApiAiClient} from 'api-ai-javascript';
 
 @Component({

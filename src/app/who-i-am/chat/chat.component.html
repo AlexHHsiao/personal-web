@@ -1,7 +1,7 @@
 <div class="chat-container">
 
   <div class="chat-header">
-    <img src="../../assets/img/chat.svg">
+    <img src="../../../assets/img/chat.svg">
 
     <span>
       Chatting with Alex bot
@@ -18,7 +18,7 @@
         <div class="chat-msg-block" [ngStyle]="{'marginLeft': msg.fromUser? '30%' : '0'}">
 
           <div class="profile-container" *ngIf="!msg.fromUser">
-            <img src="../../assets/img/useravatar.svg">
+            <img src="../../../assets/img/useravatar.svg">
           </div>
 
           <div class="chat-msg" [ngClass]="{'msg-user': msg.fromUser, 'msg-bot': !msg.fromUser}">

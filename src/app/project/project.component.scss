@@ -3,22 +3,40 @@
   height: auto;
   background-color: #ddd;
   position: relative;
+  padding: 15px 0;
 }
 
 .project-content {
   width: 750px;
-  //height: 100px;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  margin: auto;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.error-fetch {
+
+}
+
+.github-project {
+  width: 90%;
+  position: relative;
   display: block;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  padding: 25px;
+  border: 2px solid darkgray;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 768px) {
   .project-content {
     width: 90%;
+  }
+
+  .github-project {
+    padding: 15px;
   }
 }
