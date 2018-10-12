@@ -13,7 +13,8 @@ export class GithubService {
   }
 
   getGithubRepo() {
-    const url = this.apiServiceService.createUrl(this.githubServer).dictionary('/repos').param('per_page=100').getUrl();
+    const url = this.apiServiceService.createUrl(this.githubServer)
+      .dictionary('/repos').param('type=all').param('per_page=100').getUrl();
 
     return this.http.get(url, {headers: this.headerService.getGithubHeader()});
   }
