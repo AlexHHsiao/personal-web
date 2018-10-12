@@ -22,6 +22,7 @@ import {GithubService} from './service/github/github.service';
 import {ApiServerService} from './service/api-server/api-server.service';
 import {HeaderService} from './service/header/header.service';
 import { GithubProjectComponent } from './project/github-project/github-project.component';
+import { DateDirective } from './service/directive/date.directive';
 
 const router: Routes = [
   {path: '', component: MainComponent},
@@ -41,7 +42,8 @@ const router: Routes = [
     ExperimentComponent,
     WhoIAmComponent,
     ChatComponent,
-    GithubProjectComponent
+    GithubProjectComponent,
+    DateDirective
   ],
   imports: [
     BrowserModule,

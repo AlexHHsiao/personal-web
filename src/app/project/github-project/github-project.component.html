@@ -1,5 +1,13 @@
-<div class="project-title">
-  {{repo.name}}
+<div class="project-header">
+  <div class="project-title">
+    {{repo.name}}
+  </div>
+
+  <ul class="project-ts">
+    <li>Create Date: <ng-container appDate>{{repo.created_at}}</ng-container></li>
+    <li>Last Modified: <ng-container appDate>{{repo.updated_at}}</ng-container></li>
+  </ul>
+
 </div>
 
 <div class="project-body">
