@@ -4,12 +4,16 @@
   </div>
 
   <ul class="project-ts">
-    <li>Create Date: <ng-container appDate>{{repo.created_at}}</ng-container></li>
-    <li>Last Modified: <ng-container appDate>{{repo.updated_at}}</ng-container></li>
+    <li>Create Date: <ng-container>{{dateFormater(repo.created_at)}}</ng-container></li>
+    <li>Last Modified: <ng-container>{{dateFormater(repo.updated_at)}}</ng-container></li>
   </ul>
 
 </div>
 
 <div class="project-body">
+
+</div>
+
+<div class="project-footer">
 
 </div>

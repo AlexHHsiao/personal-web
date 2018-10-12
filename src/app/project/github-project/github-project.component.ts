@@ -13,25 +13,30 @@ export class GithubProjectComponent implements OnInit {
   languageCollection: any;
   contributorCollection: any;
 
-  constructor(private githubService: GithubService) { }
+  constructor(private githubService: GithubService) {
+  }
 
   ngOnInit() {
-    console.log(this.repo)
+    console.log(this.repo);
 
     this.githubService.callByUrl(this.repo.languages_url).subscribe((data) => {
-      console.log(data)
+      console.log(data);
       this.languageCollection = data;
     }, (error) => {
       this.languageCollection = [];
     });
 
     this.githubService.callByUrl(this.repo.contributors_url).subscribe((data) => {
-      console.log(data)
+      console.log(data);
       this.contributorCollection = data;
     }, (error) => {
       this.contributorCollection = [];
     });
+  }
 
+  dateFormater(date: string) {
+    const dateArr = date.split('-');
+    return dateArr[1] + ' / ' + dateArr[2].substring(0, 2) + ' / ' + dateArr[0];
   }
 
 }

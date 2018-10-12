@@ -6,9 +6,10 @@ import {Directive, ElementRef} from '@angular/core';
 export class DateDirective {
 
   constructor(private el: ElementRef) {
-    if (el.nativeElement.innerHTML !== undefined) {
-      console.log('xx')
-    }
+
+
+      console.log(el)
+
   }
 
 }
