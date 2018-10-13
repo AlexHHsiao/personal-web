@@ -25,16 +25,79 @@
       width: 100%;
       font-size: small;
       line-height: 25px;
+      text-align: right;
     }
   }
 }
 
 .project-body {
   width: 100%;
+  padding:7px 2px;
+  word-break: break-word;
+
+  span {
+    width: 100%;
+    display: block;
+    margin-bottom: 8px;
+  }
 }
 
 .project-footer {
+  width: 100%;
+  height: auto;
+  border-top: 1px solid silver;
+  padding-top: 10px;
+  white-space: nowrap;
 
+  .user-section {
+    display: inline-block;
+    white-space: normal;
+    width: 50%;
+    vertical-align: top;
+
+    span {
+      width: 100%;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .user-profile-section {
+      display: flex;
+      border: 1px solid #BEBEBE;
+      border-radius: 5px;
+      padding: 7px;
+      height: 60px;
+      margin: 0 3px 7px 3px;
+      box-sizing: border-box;
+      width: calc(100% - 6px);
+
+      img {
+        height: 100%;
+        object-fit: contain;
+        display: inline-flex;
+      }
+
+      .profile-text {
+        height: 100%;
+        display: inline-flex;
+        line-height: 44px;
+        margin-left: 10px;
+      }
+
+      .project-commit {
+        display: inline-block;
+        list-style-type: none;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+        margin: 0 0 0 10px;
+
+        li {
+          width: 100%;
+        }
+      }
+    }
+  }
 }
 
 @media only screen and (max-width: 768px) {
@@ -55,7 +118,16 @@
 
       li {
         line-height: 12.25px;
+        text-align: left;
       }
+    }
+  }
+
+  .project-footer {
+    white-space: normal;
+
+    .user-section {
+      width: 100%;
     }
   }
 }

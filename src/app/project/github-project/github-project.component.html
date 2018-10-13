@@ -4,16 +4,43 @@
   </div>
 
   <ul class="project-ts">
-    <li>Create Date: <ng-container>{{dateFormater(repo.created_at)}}</ng-container></li>
-    <li>Last Modified: <ng-container>{{dateFormater(repo.updated_at)}}</ng-container></li>
+    <li>Create Date:
+      <ng-container>{{dateFormater(repo.created_at)}}</ng-container>
+    </li>
+    <li>Last Modified:
+      <ng-container>{{dateFormater(repo.updated_at)}}</ng-container>
+    </li>
   </ul>
 
 </div>
 
 <div class="project-body">
-
+  <span>Language: {{repoLanguageCounter()}}</span>
+  {{repo.description? repo.description : 'This Repository doesn\'t have any description!'}}
 </div>
 
 <div class="project-footer">
+  <div class="user-section">
+    <span>Owner:</span>
+    <div class="user-profile-section" (click)="openProfile(repo.owner.html_url)">
+      <img [src]="repo.owner.avatar_url">
 
+      <div class="profile-text">
+        {{repo.owner.login}}
+      </div>
+
+    </div>
+  </div><div class="user-section">
+    <span>Contributors:</span>
+
+    <div *ngFor="let contr of contributorCollection" class="user-profile-section" (click)="openProfile(contr.html_url)">
+      <img [src]="contr.avatar_url">
+
+      <ul class="project-commit">
+        <li style="height: 25px; line-height: 25px">{{contr.login}}</li>
+        <li style="height: 19px; line-height: 19px; font-size: small">Contributors: {{contr.contributions}}</li>
+      </ul>
+
+    </div>
+  </div>
 </div>

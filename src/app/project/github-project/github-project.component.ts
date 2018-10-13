@@ -17,17 +17,14 @@ export class GithubProjectComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.repo);
-
     this.githubService.callByUrl(this.repo.languages_url).subscribe((data) => {
-      console.log(data);
       this.languageCollection = data;
+      console.log(data);
     }, (error) => {
-      this.languageCollection = [];
+      this.languageCollection = {};
     });
 
     this.githubService.callByUrl(this.repo.contributors_url).subscribe((data) => {
-      console.log(data);
       this.contributorCollection = data;
     }, (error) => {
       this.contributorCollection = [];
@@ -39,4 +36,23 @@ export class GithubProjectComponent implements OnInit {
     return dateArr[1] + ' / ' + dateArr[2].substring(0, 2) + ' / ' + dateArr[0];
   }
 
+  openProfile(url) {
+    event.preventDefault();
+    window.open(url);
+  }
+
+  repoLanguageCounter() {
+    if (this.languageCollection) {
+      const total = Object['values'](this.languageCollection).reduce((sum, currentVal) => {
+        return sum + currentVal;
+      }, 0);
+
+      const languageDetail = Object['keys'](this.languageCollection).reduce((acc, currentVal) => {
+        return acc + '  ' + currentVal + ': ' + (this.languageCollection[currentVal] / total * 100).toFixed(2) + '%';
+      }, Object['keys'](this.languageCollection)[0] + ': ' +
+        (Object['values'](this.languageCollection)[0] / total * 100).toFixed(2) + '%');
+
+      return languageDetail;
+    }
+  }
 }

@@ -19,9 +19,9 @@ export class ChatComponent implements OnInit {
     this.sendAllowed = true;
     this.client = new ApiAiClient({accessToken: '3dc3c8020ecb4cb0983e2a9d2719807d'});
 
-    this.client.textRequest('hello').then((response) => {
-      console.log('answer', response)
-    });
+    // this.client.textRequest('hello').then((response) => {
+    //   console.log('answer', response)
+    // });
 
     const chatMessage = new ChatMessage(
       'This is Alex bot. I can answer you ang question you want about Alex. How can I help you?',

@@ -68,7 +68,7 @@
 
   .profile-container {
     width: 45px;
-    display: inline-block;
+    display: inline-flex;
 
     img {
       height: 35px;
@@ -79,7 +79,7 @@
   }
 
   .chat-msg {
-    display: inline-block;
+    display: inline-flex;
     box-sizing: border-box;
     word-break: break-word;
     border-radius: 7px;

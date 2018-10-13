@@ -20,7 +20,6 @@
           <div class="profile-container" *ngIf="!msg.fromUser">
             <img src="../../../assets/img/useravatar.svg">
           </div>
-
           <div class="chat-msg" [ngClass]="{'msg-user': msg.fromUser, 'msg-bot': !msg.fromUser}">
             {{msg.text}}
           </div>
