@@ -17,7 +17,7 @@ export class ChatComponent implements OnInit {
   constructor(private chatService: ChatService) {
     this.msg = '';
     this.sendAllowed = true;
-    this.client = new ApiAiClient({accessToken: '3dc3c8020ecb4cb0983e2a9d2719807d'});
+    this.client = new ApiAiClient({accessToken: 'f4d5b532c03c4c8183d98c605d202d9b'});
 
     this.client.textRequest('hello').then((response) => {
       console.log('answer', response);
