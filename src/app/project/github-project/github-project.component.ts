@@ -19,7 +19,6 @@ export class GithubProjectComponent implements OnInit {
   ngOnInit() {
     this.githubService.callByUrl(this.repo.languages_url).subscribe((data) => {
       this.languageCollection = data;
-      console.log(data);
     }, (error) => {
       this.languageCollection = {};
     });
