@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {ChatService} from '../../service/chat/chat.service';
 import {ChatMessage} from '../../model/chat';
 import {ApiAiClient} from 'api-ai-javascript';
@@ -9,6 +9,8 @@ import {ApiAiClient} from 'api-ai-javascript';
   styleUrls: ['./chat.component.scss']
 })
 export class ChatComponent implements OnInit {
+
+  @ViewChild('chatContent') chatContent: ElementRef;
 
   msg: string;
   sendAllowed: boolean;
@@ -37,6 +39,9 @@ export class ChatComponent implements OnInit {
         this.responseToUser(this.msg);
 
         this.msg = '';
+        setTimeout(() => {
+          this.chatContent.nativeElement.scrollTop = this.chatContent.nativeElement.scrollHeight;
+        }, 100);
       } else {
         // cannot send tell user pls
         // waiting for serve response
@@ -58,6 +63,10 @@ export class ChatComponent implements OnInit {
         this.chatService.setMessageCollection(chatMessage);
 
         this.sendAllowed = true;
+
+        setTimeout(() => {
+          this.chatContent.nativeElement.scrollTop = this.chatContent.nativeElement.scrollHeight;
+        }, 100);
       }).catch((error) => {
         const chatMessage = new ChatMessage(
           'Sorry. I cannot answer your question now due to serve error!',
@@ -65,6 +74,10 @@ export class ChatComponent implements OnInit {
         this.chatService.setMessageCollection(chatMessage);
 
         this.sendAllowed = true;
+
+        setTimeout(() => {
+          this.chatContent.nativeElement.scrollTop = this.chatContent.nativeElement.scrollHeight;
+        }, 100);
       });
     } else {
       alert('Something is wrong here!!!');
