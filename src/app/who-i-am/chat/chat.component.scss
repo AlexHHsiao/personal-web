@@ -28,7 +28,7 @@
 
   span {
     line-height: 40px;
-    position: absolute;;
+    position: absolute;
   }
 }
 
@@ -45,6 +45,22 @@
   overflow: auto;
   padding: 5px 20px;
   box-sizing: border-box;
+}
+
+.notif-block {
+  background-color: rgb(212, 237, 218);
+  display: block;
+  width: 40%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -100px;
+  margin: auto;
+  padding: 20px 15px;
+  text-align: center;
+  border-radius: 5px;
+  color: #155724;
+  animation-duration: .5s;
 }
 
 .chat-input {
@@ -102,6 +118,10 @@
     width: 90%;
   }
 
+  .notif-block {
+    width: 80%;
+  }
+
   .chat-msg-block {
     margin-bottom: 10px;
   }
@@ -110,5 +130,23 @@
     .input-section {
       width: calc(100% - 80px);
     }
+  }
+}
+
+@keyframes notif-show {
+  from {
+    top: -100px;
+  }
+  to {
+    top: 20px;
+  }
+}
+
+@keyframes notif-miss {
+  from {
+    top: 20px;
+  }
+  to {
+    top: -100px;
   }
 }

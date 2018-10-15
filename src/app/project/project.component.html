@@ -3,12 +3,15 @@
   <div class="project-content">
 
     <div *ngIf="errorFetch" class="error-fetch">
-
+      Serve Error ... unable to see projects!!
     </div>
 
-    <div class="github-project" *ngFor="let repo of repoList" (click)="openProject(repo.html_url)">
-      <app-github-project [repo]="repo"></app-github-project>
-    </div>
+    <ng-container *ngIf="!errorFetch">
+      <div class="github-project" *ngFor="let repo of repoList" (click)="openProject(repo.html_url)">
+        <app-github-project [repo]="repo"></app-github-project>
+      </div>
+    </ng-container>
+
 
   </div>
 </div>

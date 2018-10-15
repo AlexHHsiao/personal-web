@@ -7,11 +7,18 @@
       Chatting with Alex bot
     </span>
 
+    <small style="position: relative">
+      Powered by <a href="https://dialogflow.com/">Dialogflow</a>
+    </small>
   </div>
 
   <div class="chat-body">
 
     <div class="chat-content" #chatContent>
+
+      <div class="notif-block" #notifBlock>
+        Please wait ... I need some time to response
+      </div>
 
       <ng-container *ngFor="let msg of getAllMsg()">
 
@@ -27,6 +34,17 @@
         </div>
 
       </ng-container>
+
+      <div class="chat-msg-block" *ngIf="!sendAllowed">
+
+        <div class="profile-container">
+          <img src="../../../assets/img/useravatar.svg">
+        </div>
+        <div class="chat-msg msg-bot">
+          &#9679;&#9679;&#9679;&#9679;
+        </div>
+
+      </div>
 
     </div>
 
