@@ -2,6 +2,7 @@ import {Component, ElementRef, OnInit, Renderer2, ViewChild} from '@angular/core
 import {ChatService} from '../../service/chat/chat.service';
 import {ChatMessage} from '../../model/chat';
 import {ApiAiClient} from 'api-ai-javascript';
+import {AlertService} from '../../service/alert/alert.service';
 
 @Component({
   selector: 'app-chat',
@@ -11,13 +12,12 @@ import {ApiAiClient} from 'api-ai-javascript';
 export class ChatComponent implements OnInit {
 
   @ViewChild('chatContent') chatContent: ElementRef;
-  @ViewChild('notifBlock') notifBlock: ElementRef;
 
   msg: string;
   sendAllowed: boolean;
   client: any;
 
-  constructor(private chatService: ChatService, private renderer: Renderer2) {
+  constructor(private chatService: ChatService, private renderer: Renderer2, private alertService: AlertService) {
     this.msg = '';
     this.sendAllowed = true;
     this.client = new ApiAiClient({accessToken: 'f4d5b532c03c4c8183d98c605d202d9b'});
@@ -44,14 +44,7 @@ export class ChatComponent implements OnInit {
           this.chatContent.nativeElement.scrollTop = this.chatContent.nativeElement.scrollHeight;
         }, 100);
       } else {
-        this.renderer.setStyle(this.notifBlock.nativeElement, 'animation-name', 'notif-show');
-        this.renderer.setStyle(this.notifBlock.nativeElement, 'top',
-          (this.chatContent.nativeElement.scrollHeight - this.chatContent.nativeElement.offsetHeight + 20).toString() + 'px');
-
-        setTimeout(() => {
-          this.renderer.setStyle(this.notifBlock.nativeElement, 'animation-name', 'notif-miss');
-          this.renderer.setStyle(this.notifBlock.nativeElement, 'top', '-100px');
-        }, 2000);
+        this.alertService.warn('Please wait ... I need sometime to response~~');
       }
     }
   }

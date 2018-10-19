@@ -23,6 +23,8 @@ import {ApiServerService} from './service/api-server/api-server.service';
 import {HeaderService} from './service/header/header.service';
 import { GithubProjectComponent } from './project/github-project/github-project.component';
 import { DateDirective } from './service/directive/date.directive';
+import { NotifAlertComponent } from './shared/notif-alert/notif-alert.component';
+import {AlertService} from './service/alert/alert.service';
 
 const router: Routes = [
   {path: '', component: MainComponent},
@@ -43,7 +45,8 @@ const router: Routes = [
     WhoIAmComponent,
     ChatComponent,
     GithubProjectComponent,
-    DateDirective
+    DateDirective,
+    NotifAlertComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +59,8 @@ const router: Routes = [
     ChatService,
     GithubService,
     ApiServerService,
-    HeaderService
+    HeaderService,
+    AlertService
   ],
   bootstrap: [AppComponent]
 })
