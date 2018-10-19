@@ -10,7 +10,7 @@ import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {HomeComponent} from './home/home.component';
 import {GalleryComponent} from './gallery/gallery.component';
 import {ProjectComponent} from './project/project.component';
-import {ExperimentComponent} from './experiment/experiment.component';
+import {ExperienceComponent} from './experience/experience.component';
 import {WhoIAmComponent} from './who-i-am/who-i-am.component';
 import {RouterModule, Routes} from '@angular/router';
 import {environment} from '../environments/environment';
@@ -41,7 +41,7 @@ const router: Routes = [
     HomeComponent,
     GalleryComponent,
     ProjectComponent,
-    ExperimentComponent,
+    ExperienceComponent,
     WhoIAmComponent,
     ChatComponent,
     GithubProjectComponent,

@@ -11,7 +11,7 @@ export class MainComponent implements OnInit {
   @ViewChild('home') homeComp: ElementRef;
   @ViewChild('who') whoComp: ElementRef;
   @ViewChild('project') projectComp: ElementRef;
-  @ViewChild('experiment') experimentComp: ElementRef;
+  @ViewChild('experience') experienceComp: ElementRef;
   @ViewChild('gallery') galleryComp: ElementRef;
 
   @ViewChild('header') header: HeaderComponent;
@@ -59,7 +59,7 @@ export class MainComponent implements OnInit {
         }
 
         case 'E': {
-          this.smoothScroll(window.scrollY, this.experimentComp.nativeElement.offsetTop);
+          this.smoothScroll(window.scrollY, this.experienceComp.nativeElement.offsetTop);
           break;
         }
 
@@ -123,9 +123,9 @@ export class MainComponent implements OnInit {
         && window.scrollY < this.projectComp.nativeElement.offsetTop) {
         this.header.changeMenu('W');
       } else if (window.scrollY >= this.projectComp.nativeElement.offsetTop
-        && window.scrollY < this.experimentComp.nativeElement.offsetTop) {
+        && window.scrollY < this.experienceComp.nativeElement.offsetTop) {
         this.header.changeMenu('P');
-      } else if (window.scrollY >= this.experimentComp.nativeElement.offsetTop
+      } else if (window.scrollY >= this.experienceComp.nativeElement.offsetTop
         && window.scrollY < this.galleryComp.nativeElement.offsetTop) {
         this.header.changeMenu('E');
       } else if (window.scrollY >= this.galleryComp.nativeElement.offsetTop) {

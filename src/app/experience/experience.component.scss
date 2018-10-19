@@ -1,0 +1,21 @@
+.experience-container {
+  width: 100%;
+  height: auto;
+  background-color: #4C5364;
+  color: white;
+  position: relative;
+  padding: 15px 0;
+}
+
+.experience-content {
+  width: 750px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@media only screen and (max-width: 768px) {
+  .experience-content {
+    width: 90%;
+  }
+}
