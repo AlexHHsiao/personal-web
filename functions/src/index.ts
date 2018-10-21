@@ -18,23 +18,6 @@ export const helloWorld = functions.https.onRequest((request, response) => {
   //response.send(new Player('12', 'haha', 'safasf'));
 });
 
-export const notifTest = functions.https.onRequest((req, res) => {
-  const payload = {
-    notification: {
-      title: 'this is test',
-      body: 'did you get my message??????'
-    }
-  };
-
-  // 774914481358
-  admin.messaging().sendToTopic('all', payload).then((response) => {
-    res.send(response);
-  })
-    .catch((error) => {
-      res.send(error);
-    });
-});
-
 // fire storage functions
 
 exports.createUser = functions.firestore
