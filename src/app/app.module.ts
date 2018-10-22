@@ -22,9 +22,9 @@ import {GithubService} from './service/github/github.service';
 import {ApiServerService} from './service/api-server/api-server.service';
 import {HeaderService} from './service/header/header.service';
 import { GithubProjectComponent } from './project/github-project/github-project.component';
-import { DateDirective } from './service/directive/date.directive';
 import { NotifAlertComponent } from './shared/notif-alert/notif-alert.component';
 import {AlertService} from './service/alert/alert.service';
+import {FirebaseService} from './service/firebase/firebase.service';
 
 const router: Routes = [
   {path: '', component: MainComponent},
@@ -45,7 +45,6 @@ const router: Routes = [
     WhoIAmComponent,
     ChatComponent,
     GithubProjectComponent,
-    DateDirective,
     NotifAlertComponent
   ],
   imports: [
@@ -60,7 +59,8 @@ const router: Routes = [
     GithubService,
     ApiServerService,
     HeaderService,
-    AlertService
+    AlertService,
+    FirebaseService
   ],
   bootstrap: [AppComponent]
 })

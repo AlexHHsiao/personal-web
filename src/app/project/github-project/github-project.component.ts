@@ -19,6 +19,7 @@ export class GithubProjectComponent implements OnInit {
   ngOnInit() {
     this.githubService.callByUrl(this.repo.languages_url).subscribe((data) => {
       this.languageCollection = data;
+      console.log(data)
     }, (error) => {
       this.languageCollection = {};
     });
@@ -48,8 +49,7 @@ export class GithubProjectComponent implements OnInit {
 
       const languageDetail = Object['keys'](this.languageCollection).reduce((acc, currentVal) => {
         return acc + '  ' + currentVal + ': ' + (this.languageCollection[currentVal] / total * 100).toFixed(2) + '%';
-      }, Object['keys'](this.languageCollection)[0] + ': ' +
-        (Object['values'](this.languageCollection)[0] / total * 100).toFixed(2) + '%');
+      }, '');
 
       return languageDetail;
     }
