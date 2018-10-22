@@ -13,7 +13,7 @@ export class FirebaseService {
   }
 
   getGallery() {
-    const url = this.apiServiceService.createUrl(this.firebaseLocalServer).dictionary('/personal')
+    const url = this.apiServiceService.createUrl(this.firebaseProServer).dictionary('/personal')
       .dictionary('/gallery').getUrl();
 
     return this.http.get(url);

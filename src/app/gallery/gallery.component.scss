@@ -2,4 +2,83 @@
   background-color: rgba(225, 200, 45, 0.2);
   width: 100%;
   height: 100%;
+  position: relative;
+}
+
+.gallery-content {
+  width: 750px;
+  height: 80%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  display: block;
+  background-color: rgba(0, 0, 0, .8);
+  box-sizing: border-box;
+  padding: 10px 10px 40px 10px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    animation-duration: 1.5s;
+  }
+
+  .img-counter {
+    position: absolute;
+    height: 40px;
+    width: 100%;
+    bottom: 0;
+    color: white;
+    line-height: 40px;
+    text-align: center;
+  }
+
+  .left-slide, .right-slide {
+    display: block;
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    bottom: 0;
+    border-radius: 5px;
+    margin: auto 0;
+    border: 1px solid lightgray;
+    color: black;
+    width: 40px;
+    height: 40px;
+  }
+
+  .left-slide:disabled, .right-slide:disabled {
+    cursor: not-allowed;
+    color: gray;
+  }
+
+  .left-slide {
+    left: 5px;
+  }
+
+  .right-slide {
+    right: 5px;
+  }
+}
+
+.fadeAnimation {
+  animation-name: fade;
+}
+
+@media only screen and (max-width: 768px) {
+  .gallery-content {
+    width: 90%;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: .2
+  }
+  to {
+    opacity: 1
+  }
 }

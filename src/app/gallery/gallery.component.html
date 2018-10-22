@@ -1,3 +1,19 @@
 <div class="gallery-container">
-  gallery go here
+
+  <div class="gallery-content">
+
+    <img [src]=currentImg *ngIf="currentImg !== ''" id="galleryImg" class="fadeAnimation">
+
+    <div class="img-counter">
+      {{currentIndex}} / {{totalIndex}}
+    </div>
+
+    <button class="left-slide" (click)="leftSlide()" [disabled]="currentIndex === 1">
+      ❮
+    </button>
+
+    <button class="right-slide" (click)="rightSlide()"  [disabled]="currentIndex === totalIndex">
+      ❯
+    </button>
+  </div>
 </div>
