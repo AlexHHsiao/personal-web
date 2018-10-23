@@ -12,6 +12,7 @@ export class GalleryComponent implements OnInit {
   currentIndex = 1;
   totalIndex = 1;
   imgCollection = [];
+  opacityInterval = setInterval(() => {});
 
   constructor(private firebaseService: FirebaseService) {
     this.firebaseService.getGallery().subscribe((data) => {
@@ -28,21 +29,39 @@ export class GalleryComponent implements OnInit {
 
   leftSlide() {
     if (this.currentIndex !== 1) {
+      clearInterval(this.opacityInterval);
       this.currentIndex--;
       this.currentImg = this.imgCollection[this.currentIndex - 1].url;
 
-      document.getElementById('galleryImg').classList.remove('fadeAnimation');
-      document.getElementById('galleryImg').classList.add('fadeAnimation');
+      let opacity = 0.1;
+
+      this.opacityInterval = setInterval(() => {
+        if (opacity === 1.0) {
+          clearInterval(this.opacityInterval);
+        }
+
+        document.getElementById('galleryImg').style.opacity = opacity.toString();
+        opacity += 0.3;
+      }, 100);
     }
   }
 
   rightSlide() {
     if (this.currentIndex !== this.totalIndex) {
+      clearInterval(this.opacityInterval);
       this.currentIndex++;
       this.currentImg = this.imgCollection[this.currentIndex - 1].url;
 
-      document.getElementById('galleryImg').classList.remove('fadeAnimation');
-      document.getElementById('galleryImg').classList.add('fadeAnimation');
+      let opacity = 0.1;
+
+      this.opacityInterval = setInterval(() => {
+        if (opacity === 1.0) {
+          clearInterval(this.opacityInterval);
+        }
+
+        document.getElementById('galleryImg').style.opacity = opacity.toString();
+        opacity += 0.3;
+      }, 100);
     }
   }
 }

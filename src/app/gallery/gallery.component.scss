@@ -64,21 +64,8 @@
   }
 }
 
-.fadeAnimation {
-  animation-name: fade;
-}
-
 @media only screen and (max-width: 768px) {
   .gallery-content {
     width: 90%;
-  }
-}
-
-@keyframes fade {
-  from {
-    opacity: .2
-  }
-  to {
-    opacity: 1
   }
 }
